@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ежедневник задач</title>
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Мой Ежедневник</h1>
+        </header>
+
+        <main class="content">
+            <section class="add-task">
+                <h2 class="add-task__title">Добавить новую задачу</h2>
+                <form class="form" id="taskForm">
+                    <div class="form__field">
+                        <label for="taskTitle" class="form__label">Название задачи *</label>
+                        <input 
+                            type="text" 
+                            id="taskTitle" 
+                            class="form__input" 
+                            placeholder="Введите название задачи" 
+                            required
+                        >
+                    </div>
+                    <div class="form__field">
+                        <label for="taskDescription" class="form__label">Описание</label>
+                        <textarea 
+                            id="taskDescription" 
+                            class="form__textarea" 
+                            placeholder="Добавьте описание (необязательно)"
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="form__button">Добавить задачу</button>
+                </form>
+            </section>
+
+            <section class="tasks">
+                <h2 class="tasks__title">Мои задачи</h2>
+                <div class="tasks__list" id="tasksList">
+                                    </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f5f5;
+    --accent-color: #ff6b6b;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #ddd;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-color);
+}
+
+.page {
+    min-height: 100vh;
+    background-color: var(--secondary-color);
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-color), #357abd);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.header__title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.add-task {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.add-task__title {
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.form__field {
+    margin-bottom: 1.5rem;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.form__input,
+.form__textarea,
+.form__button {
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form__input,
+.form__textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: border-color 0.3s ease;
+}
+
+.form__input:focus-visible,
+.form__textarea:focus-visible {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form__button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form__button:hover {
+    background-color: #357abd;
+}
+
+.form__button:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+}
+
+.tasks__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 1.5rem;
+}
+
+.task-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.task-card__title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    word-wrap: break-word;
+}
+
+.task-card__description {
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0 0 1.5rem 0;
+    word-wrap: break-word;
+}
+
+.task-card__delete {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: inherit;
+}
+
+.task-card__delete:hover {
+    background-color: #e55c5c;
+}
+
+.task-card__delete:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 1px;
+}
+
+.tasks__empty {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    grid-column: 1 / -1;
+    padding: 2rem;
+}
+
+/* Адаптивная верстка */
+@media screen and (min-width: 768px) {
+    .content {
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+    }
+    
+    .tasks__list {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr 3fr;
+        padding: 3rem 2rem;
+    }
+    
+    .tasks__list {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .add-task {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .add-task,
+    .task-card {
+        padding: 1.25rem;
+    }
+    
+    .form__button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .content {
+        padding: 1rem 0.5rem;
+        gap: 1rem;
+    }
+    
+    .add-task,
+    .task-card {
+        padding: 1rem;
+    }
+}
